@@ -1,4 +1,4 @@
-!#/bin/bash 
+#!/bin/bash 
 ##shebang 
 
 echo "hello-world"
