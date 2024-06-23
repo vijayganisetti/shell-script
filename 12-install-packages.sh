@@ -26,7 +26,7 @@ fi
 
 for i in $@
 do 
-echo "packages to install :$@"
+echo "packages to install :$i"
 dnf list installed $@ &>> $logsfile
 if [ $? -eq 0 ]
 then 
