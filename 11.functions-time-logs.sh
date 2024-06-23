@@ -28,9 +28,9 @@ exit 1
 else 
 echo "running with superuser"
 fi 
-dnf install chrony -y &>>$logsfile  ## saving this result to logs file
+dnf install chrony -y &>> $logsfile  ## saving this result to logs file
 validate $? "installation of chrony"
 
-dnf install gcc -y &>>$logsfile
+dnf install gcc -y &>> $logsfile
 validate $? "installation of gcc"
 
