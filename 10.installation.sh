@@ -14,7 +14,7 @@ if [ $? -ne 0 ]
 then 
 echo "failed to install mysql"
 exit 1
-then
+else
 echo "failed to install mysql"
 fi 
 dnf install git -y
