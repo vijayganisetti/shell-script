@@ -5,7 +5,7 @@
 USERID=$(id -u)
 timestamp=$(date +%f-%h-%m-%S-%Y)
 scriptname=$(echo $0 | cut -d "." -f 1)
-logsfile=$timestamp-$scriptname.log
+logsfile=/tmp/$timestamp-$scriptname.log
 R="\e[31m"
 G="\e[32m"
 N="\e[0m"
