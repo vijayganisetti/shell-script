@@ -12,7 +12,7 @@ N="\e[0m"
 
 
 validate () {
-    if [ $1-ne 0 ]
+    if [ $1 -ne 0 ]
     then 
     echo -e"$2 $R is failed"
     exit 1
@@ -28,9 +28,9 @@ exit 1
 else 
 echo "running with superuser"
 fi 
-dnf install chrony -y
+dnf install chrony -y &>>$logsfile  ## saving this result to logs file
 validate $? "installation of chrony"
 
-dnf install gcc -y
+dnf install gcc -y &>>$logsfile
 validate $? "installation of gcc"
 
