@@ -10,16 +10,16 @@ else
     echo "you are a super user"
 fi
 
-install mysql -y
+ dnf install mysql -y
 
-if[ $? -ne 0 ]
+if [ $? -ne 0 ]
 then 
    echo "failed to install mysql"
 else 
 echo "successfully installed mysql"
 fi 
 
-install git -y
+ dnfinstall git -y
 if [ $? -ne 0 ]
 then
   echo "failed to install git"
