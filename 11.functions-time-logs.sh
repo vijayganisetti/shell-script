@@ -12,7 +12,7 @@ N="\e[0m"
 
 
 validate () {
-    if [ $1-ne 0]
+    if [ $1-ne 0 ]
     then 
     echo -e"$2 $R is failed"
     exit 1
@@ -21,7 +21,7 @@ validate () {
     fi
 }
 
-if [ $USERID -ne 0]
+if [ $USERID -ne 0 ]
 then 
 echo "try with the superuser"
 exit 1
