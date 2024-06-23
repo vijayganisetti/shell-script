@@ -1,38 +1,83 @@
+# #!/bin/bash
+
+# USERID=$(id -u)
+# timestamp=$(date +%f-%h-%m-%S-%Y)
+# scriptname=$(echo $0 | cut -d "." -f1)
+# logsfile=/tmp/$timestamp-$scriptname.log
+
+# validate () {
+#     if [ $1 -ne 0 ]
+#     then
+#     echo "$2 is failed"
+#     exit 1
+#     else 
+#     echo "$2 is success"
+#     fi
+
+# }
+
+# if [ $USERID -ne 0 ]
+# then 
+# echo "plz try with the super user"
+# exit 1
+# else 
+# echo "you are super user"
+# fi
+
+# for i in $@
+# do 
+# echo "packages to install :$i"
+# dnf list installed $@ &>> $logsfile
+# if [ $? -eq 0 ]
+# then 
+# echo "skip $@ already installed"
+# else 
+# dnf install $@ -y &>> $logsfile
+# validate $? "installation of $@"
+# fi
+# done
+
 #!/bin/bash
 
 USERID=$(id -u)
-timestamp=$(date +%f-%h-%m-%S-%Y)
-scriptname=$(echo $0 | cut -d "." -f1)
-logsfile=/tmp/$timestamp-$scriptname.log
+TIMESTAMP=$(date +%F-%H-%M-%S)
+SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
+LOGFILE=/tmp/$SCRIPT_NAME-$TIMESTAMP.log
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+N="\e[0m"
 
-validate () {
-    if [ $1 -ne 0 ]
-    then
-    echo "$2 is failed"
-    exit 1
-    else 
-    echo "$2 is success"
+VALIDATE(){
+   if [ $1 -ne 0 ]
+   then
+        echo -e "$2...$R FAILURE $N"
+        exit 1
+    else
+        echo -e "$2...$G SUCCESS $N"
     fi
-
 }
 
 if [ $USERID -ne 0 ]
-then 
-echo "plz try with the super user"
-exit 1
-else 
-echo "you are super user"
+then
+    echo "Please run this script with root access."
+    exit 1 # manually exit if error comes.
+else
+    echo "You are super user."
 fi
 
 for i in $@
-do 
-echo "packages to install :$i"
-dnf list installed $@ &>> $logsfile
-if [ $? -eq 0 ]
-then 
-echo "skip $@ already installed"
-else 
-dnf install $@ -y &>> $logsfile
-validate $? "installation of $@"
-fi
+do
+    echo "package to install: $i"
+    dnf list installed $i &>>$LOGFILE
+    if [ $? -eq 0 ]
+    then
+        echo -e "$i already installed...$Y SKIPPING $N"
+    else
+        dnf install $i -y &>>$LOGFILE
+        VALIDATE $? "Installation of $i"
+    fi
 done
+
+
+
