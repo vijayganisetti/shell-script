@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-NUMBER=5
+NUMBER=$1
 if [ $NUMBER -gt 10]
 then
 echo "given number $NUMBER is gretaer then 10"
