@@ -33,5 +33,6 @@ then
 echo "skip $@ already installed"
 else 
 dnf install $@ -y &>> $logsfile
+validate $? "installation of $@"
 fi
 done
