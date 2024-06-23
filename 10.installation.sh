@@ -1,28 +1,28 @@
-#!/bin/bash
+#!/bin/bash 
+USERID=$(id-u)
 
-USERID=$(id -u)
-
-if [ $USERID -nq 0 ]
+if [$USERID -ne 0]
 then 
-    echo "plz run with the super user"
-    exit 1
+echo "plz run with super user"
+exit 1
 else
-    echo "you are a super user"
+echo "running with super user"
 fi
 
- dnf install mysql -y
-
-if [ $? -ne 0 ]
+dnf install mysql -y
+if [$? -ne 0 ]
 then 
-   echo "failed to install mysql"
-else 
-echo "successfully installed mysql"
-fi 
-
- dnfinstall git -y
-if [ $? -ne 0 ]
+echo "failed to install mysql"
+exit 1
 then
-  echo "failed to install git"
-else 
-   echo "successfully installed git"
-fi
+echo "failed to install mysql"
+fi 
+dnf install git -y
+
+if [$? -ne 0 ]
+then 
+echo "failed to install mysql"
+exit 1
+then
+echo "failed to install mysql"
+fi 
