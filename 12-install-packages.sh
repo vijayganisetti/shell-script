@@ -27,12 +27,12 @@
 # for i in $@
 # do 
 # echo "packages to install :$i"
-# dnf list installed $@ &>> $logsfile
+# dnf list installed $i &>> $logsfile
 # if [ $? -eq 0 ]
 # then 
-# echo "skip $@ already installed"
+# echo "skip $i already installed"
 # else 
-# dnf install $@ -y &>> $logsfile
+# dnf install $i -y &>> $logsfile
 # validate $? "installation of $@"
 # fi
 # done
