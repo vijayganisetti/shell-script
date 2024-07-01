@@ -21,5 +21,5 @@ fi
 
 dnf install mysql -y
 
-dnf install gittt -y
+dnf install git -y
 
