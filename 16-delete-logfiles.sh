@@ -1,5 +1,4 @@
 #!/bin/bash
-
 SOURCE_DIRECTORY=/tmp/app-logs
 
 R="\e[31m"
@@ -9,16 +8,17 @@ N="\e[0m"
 
 if [ -d $SOURCE_DIRECTORY ]
 then
-    echo -e "$G Source directory exists $N"
-else
-    echo -e "$R Please make sure $SOURCE_DIRECTORY exists $N"
-    exit 1
+echo  -e " $G source directory exists $N"
+else 
+echo "plz make sure source directory $SOURCE_DIRECTORY exists"
+exit 1
 fi
 
-FILES=$(find $SOURCE_DIRECTORY -name "*.log" -mtime +4)
+FILES=$(find $SOURCE_DIRECTORY -name "*.log" -mtime +14)
 
-while IFS= read -r line
+while IFS =read -r line
 do
-    echo "Deleting file: $FILES"
-    rm -rf $line
+echo "deleting files :$line"
+rm rf $line
+
 done <<< $FILES
