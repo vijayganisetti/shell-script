@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 SOURCE_DIRECTORY=/tmp/app-logs
 
 R="\e[31m"
@@ -14,8 +14,13 @@ echo "make sure source directory $SOURCE_DIRECTORY exits"
 
 FILES=$( SOURCE_DIRECTORY -name "*.log" -mtime +14)
 
+# while IFS= read -r line
+# do
+#  echo "deleting files :$line"
+#  rm -rf $line
+# done <<< $FILES
 while IFS= read -r line
 do
- echo "deleting files :$line"
- rm -rf $line
-done <<<$FILES
+    echo "Deleting file: $line"
+    rm -rf $line
+done <<< $FILES
