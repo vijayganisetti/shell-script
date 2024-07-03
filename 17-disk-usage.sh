@@ -11,6 +11,6 @@ FILE_NAME=$($DISK_USAGE | awk -F " " '{print $NF}')
   if [ $USAGE -ge $DISK_STORM ]
   then 
   echo "$FILE_NAME is more than $DISK_STORM% used current usage : $USAGE"
-  
-done <<<$DISK_USAGE
+  fi
+done <<< $DISK_USAGE
 
