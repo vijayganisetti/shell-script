@@ -13,4 +13,3 @@ FILE_NAME=$($DISK_USAGE | awk -F " " '{print $NF}')
   echo "$FILE_NAME is more than $DISK_STORM% used current usage : $USAGE"
   fi
 done <<< $DISK_USAGE
-
