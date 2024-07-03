@@ -1,9 +1,9 @@
 #!/bin/bash
 
-DISK_USAGE=$(df -ht | grep xfs)
+DISK_USAGE=$(df -hT | grep xfs)
 DISK_STORM=75
 
-while IFS = read -r line
+while IFS= read -r line
 do
  USAGE=$($DISK_USAGE | awk -F " " '{print $6F}' | cut -d "%" -f1)
 FILE_NAME=$($DISK_USAGE | awk -F " " '{print $NF}')
