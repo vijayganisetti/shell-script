@@ -6,19 +6,17 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-if [ -d $SOURCE_DIRECTORY ]
-then
-echo  -e " $G source directory exists $N"
+if [ -d SOURCE_DIRECTORY ]
+then 
+echo "source directory exits"
 else 
-echo "plz make sure source directory $SOURCE_DIRECTORY exists"
-exit 1
-fi
+echo "make sure source directory $SOURCE_DIRECTORY exits"
 
-FILES=$(find $SOURCE_DIRECTORY -name "*.log" -mtime +14)
+FILES=$( SOURCE_DIRECTORY -name "*.log" -mtime +14)
 
-while IFS =read -r line
+while IFS= read -r line
 do
-echo "deleting files :$line"
-rm rf $line
+ echo "deleting files :$line"
+ rm -rf $line
 
-done <<< $FILES
+done <<<$FILES
